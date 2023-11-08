@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Vuepress Plugin for rendering React component in Vuepress markdown on top of Vite Bundler, typed with JsDoc.",
   "scripts": {
     "prebuild": "rm -rf lib",
