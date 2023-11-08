@@ -1,0 +1,53 @@
+{
+  "name": "vuepress-plugin-react",
+  "version": "1.0.0",
+  "description": "A Vuepress Plugin for rendering React component in Vuepress markdown on top of Vite Bundler, typed with JsDoc.",
+  "scripts": {
+    "prebuild": "rm -rf lib",
+    "build": "tsc && npm run copy",
+    "copy": "cp -f src/client-template.js src/types.d.ts lib"
+  },
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "react",
+    "components"
+  ],
+  "homepage": "https://github.com/johnnywang1994/vuepress-plugin-react",
+  "bugs": {
+    "url": "https://github.com/johnnywang1994/vuepress-plugin-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnywang1994/vuepress-plugin-react.git"
+  },
+  "author": "johnnywang1994",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json",
+    "./types": "./lib/types.d.ts"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@vuepress/plugin-register-components": "^2.0.0-beta.67",
+    "@vuepress/utils": "^2.0.0-alpha.1",
+    "chokidar": "^3.5.3",
+    "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2",
+    "vuepress": "^2.0.0-beta.67"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
