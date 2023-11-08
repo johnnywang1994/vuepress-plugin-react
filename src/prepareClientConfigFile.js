@@ -27,17 +27,10 @@ export const prepareClientConfigFile = async (app, options, identifier) => {
     ...componentsFromDir,
     ...options.components,
   };
-  const reactComponents = Object.keys(componentsMap).join(",");
-
-  // client app enhance file content
-  const imports = Object.entries(componentsMap).map(
-    ([name, filepath]) => `import ${name} from ${JSON.stringify(filepath)};`
-  );
 
   const content = await renderFile(clientTemplatePath, {
     name: options.name,
-    components: reactComponents,
-    imports,
+    componentsMap: JSON.stringify(componentsMap),
   });
 
   // write temp file and return the file path

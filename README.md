@@ -68,6 +68,9 @@ By default, the React component will be rendered in client with `createRoot` and
 <VueReact as="Counter" clientOnly />
 ```
 
+## Dynamic import Supported
+Each of your React component will be dynamic loaded by `Suspense`, only when they are used in the current markdown page, so `No need to worry` about whether these React components will be loaded and decrease the loading speed in every page.
+
 
 ## Options
 Since this plugin is mostly based on [@vuepress/plugin-register-components](https://v2.vuepress.vuejs.org/reference/plugin/register-components.html), you can see the documentation there. Just some adjustment for default config as following
