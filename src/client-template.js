@@ -2,7 +2,9 @@ import { h, ref, onMounted, onBeforeUnmount, Suspense } from "vue";
 import { createRoot } from "react-dom/client";
 import { renderToString } from 'react-dom/server';
 
-const ComponentsMap = <%- componentsMap %>
+const importMap = {
+  <%- importMap %>
+}
 
 const <%- name %> = {
   props: {
@@ -39,10 +41,8 @@ const <%- name %> = {
       });
 
       // Lifecycle hooks should before first "import" in async setup
-      const { default: ReactComponent } = await import(
-        /* @vite-ignore */
-        `${ComponentsMap[props.as]}`
-      );
+      const importer = importMap[props.as];
+      const { default: ReactComponent } = await importer();
 
       let ssrString = '';
       if (!props.clientOnly) {

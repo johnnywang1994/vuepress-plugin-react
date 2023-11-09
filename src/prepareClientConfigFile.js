@@ -28,9 +28,15 @@ export const prepareClientConfigFile = async (app, options, identifier) => {
     ...options.components,
   };
 
+  // create importMap with static filepath, so that vite can compile correctly in build-time
+  const importMap = Object.entries(componentsMap).map(
+    ([name, filepath]) =>
+      `${JSON.stringify(name)}: () => import(${JSON.stringify(filepath)})`
+  );
+
   const content = await renderFile(clientTemplatePath, {
     name: options.name,
-    componentsMap: JSON.stringify(componentsMap),
+    importMap,
   });
 
   // write temp file and return the file path
